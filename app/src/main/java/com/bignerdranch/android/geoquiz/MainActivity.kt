@@ -41,30 +41,44 @@ class MainActivity : AppCompatActivity() {
 
         //Define action of True Button when clicked
         trueButton.setOnClickListener { view: View ->
-            Toast.makeText(
-                this,
-                R.string.correct_toast,
-                Toast.LENGTH_SHORT)
-                    .apply {
-                        setGravity(Gravity.TOP, 0, 225);
-                        show()
-                    }
+            checkAnswer(true)
         }
 
         //Define action of False Button when clicked
         falseButton.setOnClickListener { view: View ->
-            Toast.makeText(
-                this,
-                R.string.incorrect_toast,
-                Toast.LENGTH_SHORT)
-                    .apply {
-                        setGravity(Gravity.TOP, 0, 225);
-                        show()
-                    }
+            checkAnswer(false)
         }
 
-        //Set question text
+        //Define action of Next Button when clicked
+        nextButton.setOnClickListener {
+            currentIndex = (currentIndex + 1) % questionBank.size
+            updateQuestion()
+        }
+    }
+
+    //Function to update Question text
+    private fun updateQuestion() {
         val questionTextResId = questionBank[currentIndex].textResId
         questionTextView.setText(questionTextResId)
+    }
+
+    //Check set answer to Question
+    private fun checkAnswer(userAnswer: Boolean) {
+        val correctAnswer = questionBank[currentIndex].answer
+
+        val messageResId = if (userAnswer == correctAnswer) {
+            R.string.correct_toast
+        } else {
+            R.string.incorrect_toast
+        }
+
+        Toast.makeText(
+                this,
+                messageResId,
+                Toast.LENGTH_SHORT)
+                .apply {
+                    setGravity(Gravity.TOP, 0, 225);
+                    show()
+                }
     }
 }
