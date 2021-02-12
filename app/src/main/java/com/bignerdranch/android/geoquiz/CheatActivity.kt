@@ -5,12 +5,16 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.TextView
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
 
 const val EXTRA_ANSWER_SHOWN = "com.bignerdranch.android.geoquiz.answer_shown"
-
 private const val EXTRA_ANSWER_IS_TRUE = "com.bignerdranch.android.geoquiz.answer_is_true"
+private const val CTAG = "CheatActivity"
+
 
 class CheatActivity : AppCompatActivity() {
 
@@ -23,6 +27,10 @@ class CheatActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cheat)
+
+        val provider: ViewModelProvider = ViewModelProviders.of(this)
+        val cheatViewModel = provider.get(CheatViewModel::class.java)
+        Log.d(CTAG, "Got a CheatViewModel: $cheatViewModel")
 
         //Check what answer is for cheat
         answerIsTrue = intent.getBooleanExtra(EXTRA_ANSWER_IS_TRUE, false)
