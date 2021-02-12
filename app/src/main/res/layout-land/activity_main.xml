@@ -38,6 +38,15 @@
 
     </LinearLayout>
 
+    //Back Button
+    <ImageButton
+        android:id="@+id/back_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|left"
+        android:src="@drawable/arrow_left"
+        android:contentDescription="@string/back_button"/>
+
     //Cheat Button
     <Button
         android:id="@+id/cheat_button"

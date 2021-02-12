@@ -25,6 +25,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var trueButton: Button
     private lateinit var falseButton: Button
     private lateinit var nextButton: ImageButton
+    private lateinit var backButton: ImageButton
     private lateinit var cheatButton: Button
     private lateinit var questionTextView: TextView
 
@@ -47,6 +48,7 @@ class MainActivity : AppCompatActivity() {
         trueButton = findViewById(R.id.true_button)
         falseButton = findViewById(R.id.false_button)
         nextButton = findViewById(R.id.next_button)
+        backButton = findViewById(R.id.back_button)
         cheatButton = findViewById(R.id.cheat_button)
         questionTextView = findViewById(R.id.question_text_view)
 
@@ -63,6 +65,13 @@ class MainActivity : AppCompatActivity() {
         //Define action of Next Button when clicked
         nextButton.setOnClickListener {
             quizViewModel.moveToNext()
+            updateQuestion()
+        }
+
+
+        //Define action of Back Button when clicked
+        backButton.setOnClickListener {
+            quizViewModel.moveToLast()
             updateQuestion()
         }
 

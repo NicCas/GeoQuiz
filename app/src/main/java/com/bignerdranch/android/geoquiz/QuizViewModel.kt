@@ -31,4 +31,13 @@ class QuizViewModel : ViewModel() {
         currentIndex = (currentIndex + 1) % questionBank.size
     }
 
+    fun moveToLast(){
+        val tempIndex = (currentIndex - 1) % (questionBank.size)
+        currentIndex = if (tempIndex < 0){
+            tempIndex + questionBank.size
+        } else {
+            tempIndex
+        }
+    }
+
 }
