@@ -8,6 +8,7 @@ import android.util.Log
 import android.view.Gravity
 import android.view.View
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
@@ -23,7 +24,7 @@ class MainActivity : AppCompatActivity() {
     //Declare Buttons and Text
     private lateinit var trueButton: Button
     private lateinit var falseButton: Button
-    private lateinit var nextButton: Button
+    private lateinit var nextButton: ImageButton
     private lateinit var cheatButton: Button
     private lateinit var questionTextView: TextView
 
@@ -85,7 +86,7 @@ class MainActivity : AppCompatActivity() {
         }
         if (requestCode == REQUEST_CODE_CHEAT) {
             quizViewModel.isCheater =
-                data?.getBooleanExtra(EXTRA_ANSWER_SHOWN, false) ?: false
+                    data?.getBooleanExtra(EXTRA_ANSWER_SHOWN, false) ?: false
         }
     }
 
