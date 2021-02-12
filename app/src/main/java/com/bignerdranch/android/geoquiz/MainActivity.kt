@@ -140,6 +140,7 @@ class MainActivity : AppCompatActivity() {
             else -> R.string.incorrect_toast
         }
 
+        //"Cheating is wrong" text
         Toast.makeText(
                 this,
                 messageResId,
